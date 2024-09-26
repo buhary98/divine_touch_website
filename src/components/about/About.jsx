@@ -51,12 +51,14 @@ const About = () => {
     if (icon2Ref.current) observer.observe(icon2Ref.current);
     if (icon3Ref.current) observer.observe(icon3Ref.current);
 
-    return () => {
+    /* return () => {
       if (imageRef.current) observer.unobserve(imageRef.current);
       if (icon1Ref.current) observer.unobserve(icon1Ref.current);
       if (icon2Ref.current) observer.unobserve(icon2Ref.current);
       if (icon3Ref.current) observer.unobserve(icon3Ref.current);
-    };
+    }; */
+    
+    return () => observer.disconnect();
   }, []);
 
   return (
