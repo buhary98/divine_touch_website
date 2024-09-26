@@ -1,0 +1,84 @@
+.our-services .services-left-dec img {
+    width: 387px;
+    height: 638px;
+    left: -80px;
+    top: -140px;
+    position: absolute;
+    z-index: 1;
+}
+
+.our-services .services-right-dec img {
+    width: 305px;
+    height: 305px;
+    right: 25px;
+    bottom: -120px;
+    position: absolute;
+    z-index: 1;
+}
+
+.our-services .container {
+    position: relative;
+}
+
+.our-services {
+    position: relative;
+    margin-top: 0px;
+    padding-top: 120px;
+}
+
+.our-services .section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.our-services .section-heading h2 {
+    margin: 0px 60px;
+    margin-bottom: -10px;
+}
+
+.our-services .item {
+    text-align: center;
+    margin: 15px;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+}
+
+.our-services .item h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2a2a2a;
+    margin-bottom: 30px;
+    line-height: 30px;
+}
+
+.our-services .item .icon {
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+}
+
+.our-services .item p {
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.slick-slider {
+    z-index: 1;
+}
+
+.slick-slide>div {
+    padding: 0 15px;
+}
+
+.slick-list {
+    margin: 0 -15px;
+}
+
+@media (max-width: 767px) {
+    .our-services .section-heading h2 {
+        margin: 0px;
+    }
+}
