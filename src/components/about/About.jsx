@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import AboutLeft from "../../assets/images/about-left-image.jpg";
 import Icon1 from "../../assets/images/about-icon-01.png";
@@ -6,15 +6,71 @@ import Icon2 from "../../assets/images/about-icon-02.png";
 import Icon3 from "../../assets/images/about-icon-03.png";
 
 import "./About.css";
+import FactItem from "./FactItem";
 
 const About = () => {
+  const [imageInView, setImageInView] = useState(false);
+  const [icon1InView, setIcon1InView] = useState(false);
+  const [icon2InView, setIcon2InView] = useState(false);
+  const [icon3InView, setIcon3InView] = useState(false);
+
+  const imageRef = useRef(null);
+  const icon1Ref = useRef(null);
+  const icon2Ref = useRef(null);
+  const icon3Ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === imageRef.current) {
+              setImageInView(true);
+              observer.unobserve(entry.target);
+            }
+            if (entry.target === icon1Ref.current) {
+              setIcon1InView(true);
+              observer.unobserve(entry.target);
+            }
+            if (entry.target === icon2Ref.current) {
+              setIcon2InView(true);
+              observer.unobserve(entry.target);
+            }
+            if (entry.target === icon3Ref.current) {
+              setIcon3InView(true);
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (imageRef.current) observer.observe(imageRef.current);
+    if (icon1Ref.current) observer.observe(icon1Ref.current);
+    if (icon2Ref.current) observer.observe(icon2Ref.current);
+    if (icon3Ref.current) observer.observe(icon3Ref.current);
+
+    return () => {
+      if (imageRef.current) observer.unobserve(imageRef.current);
+      if (icon1Ref.current) observer.unobserve(icon1Ref.current);
+      if (icon2Ref.current) observer.unobserve(icon2Ref.current);
+      if (icon3Ref.current) observer.unobserve(icon3Ref.current);
+    };
+  }, []);
+
   return (
     <div id="about" className="about-us section">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 align-self-center">
             <div className="left-image">
-              <img src={AboutLeft} alt="Two Girls working together" />
+              <img
+                ref={imageRef}
+                src={imageInView ? AboutLeft : ""}
+                alt="Two Girls working together"
+                className={imageInView ? "loaded" : "loading"}
+              />
             </div>
           </div>
           <div className="col-lg-6">
@@ -35,49 +91,37 @@ const About = () => {
               </p>
               <div className="row">
                 <div className="col-lg-4">
-                  <div className="fact-item">
-                    <div className="count-area-content">
-                      <div className="icon">
-                        <img src={Icon1} alt="SEO Projects" />
-                      </div>
-                      <div className="count-digit">15</div>
-                      <div className="count-title">Projects</div>
-                      <p>
-                        Our commitment to excellence, creativity, and innovation
-                        is evident in every project we undertake.
-                      </p>
-                    </div>
-                  </div>
+                  <FactItem
+                    icon={icon1InView ? Icon1 : ""}
+                    iconClass={icon1InView ? "loaded" : "loading"}
+                    ref={icon1Ref}
+                    digit="15"
+                    title="Projects"
+                    text="Our commitment to excellence, creativity, and innovation is evident in every project we undertake."
+                    altText="Icon representing completed projects"
+                  />
                 </div>
                 <div className="col-lg-4">
-                  <div className="fact-item">
-                    <div className="count-area-content">
-                      <div className="icon">
-                        <img src={Icon2} alt="Websites" />
-                      </div>
-                      <div className="count-digit">8</div>
-                      <div className="count-title">Services</div>
-                      <p>
-                        We offer a comprehensive range of interior design
-                        services tailored to meet your unique needs.
-                      </p>
-                    </div>
-                  </div>
+                  <FactItem
+                    icon={icon2InView ? Icon2 : ""}
+                    iconClass={icon2InView ? "loaded" : "loading"}
+                    ref={icon2Ref}
+                    digit="8"
+                    title="Services"
+                    text="We offer a comprehensive range of interior design services tailored to meet your unique needs."
+                    altText="Icon representing services offered"
+                  />
                 </div>
                 <div className="col-lg-4">
-                  <div className="fact-item">
-                    <div className="count-area-content">
-                      <div className="icon">
-                        <img src={Icon3} alt="Satisfied Clients" />
-                      </div>
-                      <div className="count-digit">10</div>
-                      <div className="count-title">Clients</div>
-                      <p>
-                        We aim to deliver distinctive spaces that our clients
-                        will cherish for years to come.
-                      </p>
-                    </div>
-                  </div>
+                  <FactItem
+                    icon={icon3InView ? Icon3 : ""}
+                    iconClass={icon3InView ? "loaded" : "loading"}
+                    ref={icon3Ref}
+                    digit="10"
+                    title="Clients"
+                    text="We aim to deliver distinctive spaces that our clients will cherish for years to come."
+                    altText="Icon representing satisfied clients"
+                  />
                 </div>
               </div>
             </div>

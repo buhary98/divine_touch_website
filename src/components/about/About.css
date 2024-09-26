@@ -1,5 +1,4 @@
 .about-us {
-  margin-top: 0px;
   padding-top: 120px;
 }
 
@@ -15,31 +14,61 @@
   margin-top: 50px;
 }
 
-.about-us .fact-item .icon {
+.fact-item {
+  margin-top: 45px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.fact-item .icon {
   width: 45px;
   height: 45px;
+  margin: 0 auto;
 }
 
-.about-us .fact-item {
-  margin-top: 45px;
-}
-
-.about-us .fact-item .count-digit {
+.fact-item .count-digit {
   font-size: 48px;
   font-weight: 700;
   color: #2a2a2a;
   margin-top: 5px;
 }
 
-.about-us .fact-item .count-title {
+.fact-item .count-title {
   font-size: 15px;
   color: #ff695f;
 }
 
-.about-us .fact-item p {
+.fact-item p {
   margin-top: 20px;
   padding-top: 15px;
   border-top: 1px solid #eee;
+}
+
+.left-image img {
+  width: 100%;
+  height: auto;
+  transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.left-image img.loading {
+  filter: blur(10px);
+  opacity: 0.7;
+}
+
+.left-image img.loaded {
+  filter: none;
+  opacity: 1;
+}
+
+.loading {
+  filter: blur(10px);
+  transition: filter 0.5s ease;
+}
+
+.loaded {
+  filter: blur(0);
+  transition: filter 0.5s ease;
 }
 
 @media (max-width: 992px) {
@@ -47,13 +76,7 @@
     margin-right: 0px;
   }
 
-  .fact-item {
-    text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .fact-item .icon {
-    margin: 0 auto;
+  .about-us .left-image {
+    margin-right: 0px;
   }
 }
