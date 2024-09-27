@@ -1,17 +1,29 @@
-import React from "react";
+import React, { Suspense } from "react";
+
 import PriceLeft from "../../assets/images/tables-left-dec.png";
-import PriceRight from "../../assets/images/tables-right-dec.png";
+import PriceRight from "../../assets/images/tables-right-dec.png"
+
 import "./Price.css";
 
-const Price = () => {
+/* const PriceLeft = React.lazy(() =>
+  import("../../assets/images/tables-left-dec.png")
+);
+const PriceRight = React.lazy(() =>
+  import("../../assets/images/tables-right-dec.png")
+); */
+
+const Price = React.memo(() => {
   return (
     <div id="pricing" className="pricing-tables">
-      <div className="tables-left-dec">
-        <img src={PriceLeft} alt="Left decorative pricing table" />
-      </div>
-      <div className="tables-right-dec">
-        <img src={PriceRight} alt="Right decorative pricing table" />
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="tables-left-dec">
+          <img src={PriceLeft} alt="Left decorative pricing table" />
+        </div>
+        <div className="tables-right-dec">
+          <img src={PriceRight} alt="Right decorative pricing table" />
+        </div>
+      </Suspense>
+
       <div className="container">
         <div className="row">
           <div className="col-lg-6 offset-lg-3">
@@ -75,6 +87,6 @@ const Price = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Price;
