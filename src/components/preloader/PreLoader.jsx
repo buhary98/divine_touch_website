@@ -5,16 +5,20 @@ const PreLoader = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading completion after a delay
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Adjust delay as needed
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className={`js-preloader ${!isLoading ? 'loaded' : ''}`}>
+    <div 
+      className={`js-preloader ${!isLoading ? 'loaded' : ''}`} 
+      aria-busy={isLoading} 
+      aria-live="polite" 
+      role="alert"
+    >
       <div className="preloader-inner">
         <span className="dot"></span>
         <div className="dots">
