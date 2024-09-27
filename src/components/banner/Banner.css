@@ -7,27 +7,50 @@
     overflow: hidden;
 }
 
-.main-banner:after {
-    content: '';
-    background-image: url('../../assets/images/baner-dec-left.png');
-    background-repeat: no-repeat;
+.main-banner .banner-decor-left {
     position: absolute;
     left: 0;
     top: 100px;
     width: 397px;
-    height: 532px;
+    height: auto;
 }
 
-.main-banner:before {
-    content: '';
-    background-image: url('../../assets/images/banner-right-image.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
+.main-banner .banner-decor-right {
     position: absolute;
     right: 0;
     top: 100px;
     width: 819px;
-    height: 674px;
+    height: auto;
+}
+
+.banner-decor-left.loading {
+    filter: blur(10px);
+    opacity: 0.7;
+}
+
+.banner-decor-left.loaded {
+    filter: none;
+    opacity: 1;
+}
+
+.banner-decor-right.loading {
+    filter: blur(10px);
+    opacity: 0.7;
+}
+
+.banner-decor-right.loaded {
+    filter: none;
+    opacity: 1;
+}
+
+.loading {
+    filter: blur(10px);
+    transition: filter 0.5s ease;
+}
+
+.loaded {
+    filter: blur(0);
+    transition: filter 0.5s ease;
 }
 
 .main-banner .item h6 {
@@ -121,6 +144,16 @@
     border-bottom: 3px solid #ff685f;
 }
 
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff695f;
+}
+
 @media (max-width: 767px) {
     .down-buttons {
         display: block;
@@ -133,7 +166,7 @@
 }
 
 @media (max-width: 992px) {
-    .main-banner::before {
+    .banner-decor-right {
         display: none;
     }
 
@@ -151,8 +184,8 @@
 }
 
 @media (max-width: 1240px) {
-    .main-banner::before {
+    .banner-decor-right {
         width: 640px;
-        height: 526px;
+        height: auto;
     }
 }

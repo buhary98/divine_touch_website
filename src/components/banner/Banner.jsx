@@ -1,9 +1,17 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
+
+import BannerLeft from "../../assets/images/baner-dec-left.png";
+import BannerRight from "../../assets/images/banner-right-image.webp";
+
 import "./Banner.css";
 
 const Slider = lazy(() => import("react-slick"));
 
-const customPaging = (i) => <div className="custom-dot">{i + 1}</div>;
+const customPaging = (i) => (
+  <div key={`dot-${i + 1}`} className="custom-dot">
+    {i + 1}
+  </div>
+);
 
 const sliderContent = [
   {
@@ -29,18 +37,20 @@ const sliderContent = [
   },
 ];
 
-const DownButtons = React.memo(() => (
+const DownButtons = () => (
   <div className="down-buttons">
     <div className="main-blue-button-hover">
-      <a href="#contact">Message Us Now</a>
+      <a href="#contact" aria-label="Message us now">
+        Message Us Now
+      </a>
     </div>
     <div className="call-button">
       <div className="lnk">
-        <i className="fa fa-phone"></i> +852-6060-6457
+        <i className="fa fa-phone" aria-hidden="true"></i> +852-6060-6457
       </div>
     </div>
   </div>
-));
+);
 
 const Banner = () => {
   const settings = {
@@ -57,14 +67,73 @@ const Banner = () => {
     arrows: false,
   };
 
+  const [isImageVisible, setImageVisible] = useState(false);
+  const leftImageRef = useRef(null);
+  const rightImageRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const leftImageObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setImageVisible(true);
+          leftImageObserver.unobserve(leftImageRef.current);
+        }
+      });
+    }, observerOptions);
+
+    const rightImageObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setImageVisible(true);
+          rightImageObserver.unobserve(rightImageRef.current);
+        }
+      });
+    }, observerOptions);
+
+    if (leftImageRef.current) {
+      leftImageObserver.observe(leftImageRef.current);
+    }
+
+    if (rightImageRef.current) {
+      rightImageObserver.observe(rightImageRef.current);
+    }
+
+    return () => {
+      leftImageObserver.disconnect();
+      rightImageObserver.disconnect();
+    };
+  }, []);
+
   return (
     <div className="main-banner" id="home">
+      <img
+        ref={leftImageRef}
+        src={isImageVisible ? BannerLeft : ""}
+        alt="Left Decoration"
+        className={`banner-decor-left ${
+          isImageVisible ? "loaded" : "loading"
+        }`}
+      />
+      <img
+        ref={rightImageRef}
+        src={isImageVisible ? BannerRight : ""}
+        alt="Right Decoration"
+        className={`banner-decor-right ${
+          isImageVisible ? "loaded" : "loading"
+        }`}
+      />
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
             <div className="row">
               <div className="col-lg-6 align-self-center">
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div className="loader">Loading...</div>}>
                   <Slider {...settings} className="owl-banner">
                     {sliderContent.map((content, index) => (
                       <div className="item header-text" key={index}>
