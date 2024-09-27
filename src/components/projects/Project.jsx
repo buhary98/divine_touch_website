@@ -56,7 +56,7 @@ const Project = () => {
     },
     {
       image: ProjectImg3,
-      title: "Restaurents",
+      title: "Restaurants",
       category: "Hospitality design",
       link: "#",
     },
@@ -75,9 +75,9 @@ const Project = () => {
   ];
 
   return (
-    <div id="project" className="our-project section">
-      <div className="project-left-dec">
-        <img src={ProjectLeft} alt="left decoration" />
+    <div id="project" className="project-section section">
+      <div className="project-section__left-decoration">
+        <img src={ProjectLeft} alt="Decoration on the left side" />
       </div>
       <div className="container">
         <div className="row">
@@ -95,10 +95,14 @@ const Project = () => {
           <div className="col-lg-12">
             <Slider {...settings}>
               {projectItems.map((item, index) => (
-                <div key={index} className="item">
-                  <div className="thumb">
-                    <img src={item.image} alt={item.title} />
-                    <div className="hover-effect">
+                <div key={index} className="project-item">
+                  <div className="project-item__thumb">
+                    <img
+                      src={item.image}
+                      alt={`${item.title} project`}
+                      loading="lazy"
+                    />
+                    <div className="project-item__hover-effect">
                       <div className="inner-content">
                         <a
                           href={item.link}

@@ -1,49 +1,47 @@
-.our-project .project-left-dec img {
+/* Removed unnecessary .owl-project and slick-dots styling */
+
+/* Improved unique class naming using BEM */
+.project-section {
+    padding-top: 120px;
+    position: relative;
+    margin: 0px 15px;
+}
+
+.project-section__left-decoration img {
     width: 342px;
     height: 311px;
+    position: absolute;
     left: 45px;
     top: 120px;
-    position: absolute;
     z-index: 1;
 }
 
-.our-project {
-    padding-top: 120px;
-    margin-top: 0px;
-    position: relative;
-}
-
-.our-project .section-heading {
+.section-heading {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 60px;
 }
 
-.our-project .section-heading h2 {
-    text-align: center;
+.section-heading h2 {
     margin: 0px 40px;
     position: relative;
     z-index: 1;
 }
 
-.our-project {
-    margin: 0px 15px;
-}
-
-.our-project .item .thumb {
+.project-item__thumb {
     position: relative;
     padding: 0 10px;
 }
 
-.our-project .item .thumb:hover .hover-effect {
+.project-item__thumb:hover .project-item__hover-effect {
     bottom: 30px;
 }
 
-.our-project .item .thumb:hover img {
+.project-item__thumb:hover img {
     opacity: 0.7;
 }
 
-.our-project .item .hover-effect {
+.project-item__hover-effect {
     position: absolute;
     background-image: url(../../assets/images/hover-bg.png);
     background-repeat: no-repeat;
@@ -55,112 +53,28 @@
     height: 210px;
 }
 
-.our-project .item .hover-effect .inner-content {
+.project-item__hover-effect .inner-content {
     position: absolute;
     right: 30px;
     bottom: 30px;
     text-align: right;
 }
 
-.our-project .item .hover-effect .inner-content h4 {
+.project-item__hover-effect .inner-content h4 {
     font-size: 20px;
     font-weight: 700;
     color: #fff;
     margin-bottom: 15px;
 }
 
-.our-project .item .hover-effect .inner-content span {
+.project-item__hover-effect .inner-content span {
     font-size: 15px;
     color: #fff;
 }
 
-.our-project .item .thumb img {
+.project-item__thumb img {
     border-radius: 20px;
     transition: all .3s;
-}
-
-.owl-project .owl-nav {
-    position: absolute;
-    top: 42%;
-    width: 100%;
-}
-
-.owl-project .owl-nav .owl-prev {
-    position: absolute;
-    left: 25px;
-}
-
-.owl-project .owl-nav .owl-next {
-    position: absolute;
-    right: 30px;
-}
-
-.owl-project .owl-nav .owl-prev span {
-    color: transparent;
-}
-
-.owl-project .owl-nav .owl-prev span:hover::after {
-    opacity: 1;
-}
-
-.owl-project .owl-nav .owl-prev span:after {
-    width: 46px;
-    height: 46px;
-    background-color: #ff695f;
-    display: inline-block;
-    text-align: center;
-    line-height: 46px;
-    border-radius: 50%;
-    color: #fff;
-    content: '\f104';
-    font-size: 22px;
-    font-family: 'FontAwesome';
-    transition: all .5s;
-    opacity: 0.5;
-}
-
-.owl-project .owl-nav .owl-next span {
-    color: transparent;
-}
-
-.owl-project .owl-nav .owl-next span:hover::after {
-    opacity: 1;
-}
-
-.owl-project .owl-nav .owl-next span:after {
-    width: 46px;
-    height: 46px;
-    background-color: #ff695f;
-    display: inline-block;
-    text-align: center;
-    line-height: 46px;
-    border-radius: 50%;
-    color: #fff;
-    content: '\f105';
-    font-size: 22px;
-    font-family: 'FontAwesome';
-    transition: all .5s;
-    opacity: 0.5;
-}
-
-.owl-project .owl-dots {
-    text-align: center;
-    margin-top: 40px;
-}
-
-.owl-project .owl-dots .owl-dot {
-    width: 6px;
-    height: 6px;
-    background-color: #ff695f;
-    border-radius: 50%;
-    opacity: 0.3;
-    margin: 0px 5px;
-}
-
-.owl-project .owl-dots .active {
-    opacity: 1;
-    width: 10px;
-    height: 10px;
 }
 
 .slick-dots {
@@ -189,7 +103,7 @@
 }
 
 @media (max-width: 992px) {
-    .our-project .section-heading h2 {
+    .section-heading h2 {
         margin: 0px;
     }
 }
