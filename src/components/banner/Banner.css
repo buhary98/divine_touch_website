@@ -2,7 +2,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    padding: 180px 0px 130px 0px;
+    padding: 180px 0 130px;
     position: relative;
     overflow: hidden;
 }
@@ -14,13 +14,13 @@
     position: absolute;
     left: 0;
     top: 100px;
-    width: 267px;
+    width: 397px;
     height: 532px;
 }
 
 .main-banner:before {
     content: '';
-    background-image: url('../../assets/images/banner-right-image.jpg');
+    background-image: url('../../assets/images/banner-right-image.webp');
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
@@ -28,10 +28,6 @@
     top: 100px;
     width: 819px;
     height: 674px;
-}
-
-.main-banner .item {
-    margin-right: 45px;
 }
 
 .main-banner .item h6 {
@@ -58,14 +54,14 @@
 }
 
 .main-banner .item p {
-    margin: 20px 0px;
+    margin: 20px 0;
 }
 
-.main-banner .item .down-buttons {
+.down-buttons {
     display: inline-flex;
 }
 
-.main-banner .item .down-buttons .call-button .lnk i {
+.down-buttons .call-button .lnk i {
     margin-right: 5px;
     width: 46px;
     height: 46px;
@@ -73,40 +69,31 @@
     text-align: center;
     line-height: 46px;
     border-radius: 50%;
-    background: rgb(255, 104, 95);
     background: linear-gradient(105deg, rgba(255, 104, 95, 1) 0%, rgba(255, 144, 104, 1) 100%);
     color: #fff;
     font-size: 20px;
 }
 
-.main-banner .item .down-buttons .call-button .lnk {
+.down-buttons .call-button .lnk {
     color: #ff695f;
     font-size: 15px;
     font-weight: 500;
     margin-left: 30px;
 }
 
-.main-banner .active:before {
-    color: #ff685f;
-    border-bottom: 3px solid #ff685f;
-}
-
-.slick-dots li {
-    margin: 0px;
-}
-
 .slick-dots.custom-dots {
-    display: block;
+    display: flex;
     justify-content: center;
     text-align: left;
-    list-style: none;
     padding: 0;
-    /* margin-top: 40px; */
     bottom: -80px;
 }
 
+.slick-dots.custom-dots li {
+    margin: 0;
+}
+
 .slick-dots.custom-dots li button {
-    border: none;
     background: none;
     font-size: 18px;
     color: #333;
@@ -114,10 +101,7 @@
     transition: color 0.3s ease-in-out;
 }
 
-.slick-dots.custom-dots li.slick-active button {
-    color: #ff695f;
-}
-
+.slick-dots.custom-dots li.slick-active button,
 .slick-dots.custom-dots li button:hover {
     color: #ff695f;
 }
@@ -125,35 +109,25 @@
 .custom-dot {
     font-size: 20px;
     font-weight: bold;
-    margin: 0px;
     color: #2a2a2a;
     display: inline-block;
     border-bottom: 3px solid transparent;
     transition: all 0.5s;
 }
 
-.custom-dot:hover {
-    color: #ff685f;
-    border-bottom: 3px solid #ff685f;
-}
-
+.custom-dot:hover,
 .slick-active .custom-dot {
     color: #ff685f;
     border-bottom: 3px solid #ff685f;
 }
 
 @media (max-width: 767px) {
-    .main-banner .item .down-buttons {
-        display: inline-block;
+    .down-buttons {
+        display: block;
     }
 
-    .main-banner .item .down-buttons .main-blue-button {
-        margin-right: 0px;
-        margin-bottom: 15px;
-    }
-
-    .main-banner .item .down-buttons .call-button .lnk {
-        margin-left: 0px;
+    .down-buttons .call-button .lnk {
+        margin-left: 0;
         margin-top: 20px;
     }
 }
@@ -161,10 +135,6 @@
 @media (max-width: 992px) {
     .main-banner::before {
         display: none;
-    }
-
-    .main-banner .item {
-        margin-right: 0px;
     }
 
     .main-banner {
@@ -185,5 +155,4 @@
         width: 640px;
         height: 526px;
     }
-
 }
