@@ -1,10 +1,19 @@
-import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import React, { useState, useCallback, useEffect } from "react";
+import debounce from "lodash.debounce";
+
 import ContactImg from "../../assets/images/contact-dec.png";
 import ContactLeft from "../../assets/images/contact-left-dec.png";
+
 import "./Contact.css";
 
-const Contact = () => {
+/* const ContactImg = React.lazy(() =>
+  import("../../assets/images/contact-dec.png")
+);
+const ContactLeft = React.lazy(() =>
+  import("../../assets/images/contact-left-dec.png")
+); */
+
+const Contact = React.memo(() => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,47 +21,59 @@ const Contact = () => {
   });
   const [formError, setFormError] = useState(null);
   const [formSuccess, setFormSuccess] = useState(null);
+  const [contactImgLoaded, setContactImgLoaded] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const handleChange = useCallback(
+    debounce((e) => {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [e.target.name]: e.target.value,
+      }));
+    }, 300),
+    []
+  );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     setFormError(null);
     setFormSuccess(null);
 
-    emailjs
-      .sendForm(
+    try {
+      const emailjs = await import("emailjs-com");
+      const result = await emailjs.sendForm(
         "service_87iwmac",
         "template_d66np3l",
         e.target,
         "OCjA3FLwp1URC4qCR"
-      )
-      .then((result) => {
-        console.log(result.text);
-        setFormSuccess("Mission Accomplished!");
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-        });
+      );
+      console.log(result.text);
+      setFormSuccess("Mission Accomplished!");
+      setFormData({ name: "", email: "", message: "" });
 
-        setTimeout(() => {
-          setFormSuccess(null);
-        }, 4000);
-      })
-      .catch((error) => {
-        console.error("EmailJS Error:", error);
-        setFormError("Oops! Give it Another Shot.");
-        setTimeout(() => {
-          setFormError(null);
-        }, 4000);
-      });
-  };
+      setTimeout(() => {
+        setFormSuccess(null);
+      }, 4000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setFormError("Oops! Give it Another Shot.");
+      setTimeout(() => {
+        setFormError(null);
+      }, 4000);
+    }
+  }, []);
+
+  useEffect(() => {
+    const imgObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setContactImgLoaded(true);
+      }
+    });
+    const target = document.querySelector(".contact-dec");
+    if (target) {
+      imgObserver.observe(target);
+    }
+    return () => imgObserver.disconnect();
+  }, []);
 
   return (
     <div id="contact" className="contact-us section">
@@ -61,7 +82,7 @@ const Contact = () => {
           <div className="col-lg-7">
             <div className="section-heading">
               <h2>
-                Feel free to <em>Contact</em> our <span>Experts</span>
+                Feel free to <em>Contact</em> our <span>Exports</span>
               </h2>
               <div id="map">
                 <iframe
@@ -95,11 +116,9 @@ const Contact = () => {
                     <input
                       type="text"
                       name="name"
-                      id="name"
                       placeholder="Your Name"
                       value={formData.name}
                       onChange={handleChange}
-                      autoComplete="on"
                       aria-label="Name"
                       required
                     />
@@ -110,7 +129,6 @@ const Contact = () => {
                     <input
                       type="email"
                       name="email"
-                      id="email"
                       value={formData.email}
                       onChange={handleChange}
                       pattern="[^ @]*@[^ @]*"
@@ -124,8 +142,7 @@ const Contact = () => {
                   <fieldset>
                     <textarea
                       name="message"
-                      id="message"
-                      placeholder="Please text here..."
+                      placeholder="Your Message"
                       value={formData.message}
                       onChange={handleChange}
                       aria-label="Message"
@@ -148,13 +165,19 @@ const Contact = () => {
         </div>
       </div>
       <div className="contact-dec">
-        <img src={ContactImg} alt="Decoration" />
+        {contactImgLoaded && (
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <img src={ContactImg} alt="Decoration" />
+          </React.Suspense>
+        )}
       </div>
       <div className="contact-left-dec">
-        <img src={ContactLeft} alt="Decoration" />
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <img src={ContactLeft} alt="Decoration" />
+        </React.Suspense>
       </div>
     </div>
   );
-};
+});
 
 export default Contact;
