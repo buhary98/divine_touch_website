@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-
 import emailjs from "emailjs-com";
-
 import ContactImg from "../../assets/images/contact-dec.png";
 import ContactLeft from "../../assets/images/contact-left-dec.png";
-
 import "./Contact.css";
 
 const Contact = () => {
@@ -35,33 +32,28 @@ const Contact = () => {
         e.target,
         "OCjA3FLwp1URC4qCR"
       )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setFormSuccess("Mission Accomplished!");
-          setFormData({
-            name: "",
-            email: "",
-            message: "",
-          });
+      .then((result) => {
+        console.log(result.text);
+        setFormSuccess("Mission Accomplished!");
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
 
-          setTimeout(() => {
-            setFormSuccess(null);
-          }, 4000);
-        },
-        (error) => {
-          console.log(error.text);
-          setFormError("Oops! Give it Another Shot.");
-          setTimeout(() => {
-            setFormError(null);
-          }, 4000);
-        }
-      )
+        setTimeout(() => {
+          setFormSuccess(null);
+        }, 4000);
+      })
       .catch((error) => {
         console.error("EmailJS Error:", error);
         setFormError("Oops! Give it Another Shot.");
+        setTimeout(() => {
+          setFormError(null);
+        }, 4000);
       });
   };
+
   return (
     <div id="contact" className="contact-us section">
       <div className="container">
@@ -69,7 +61,7 @@ const Contact = () => {
           <div className="col-lg-7">
             <div className="section-heading">
               <h2>
-                Feel free to <em>Contact</em> our <span>Exports</span>
+                Feel free to <em>Contact</em> our <span>Experts</span>
               </h2>
               <div id="map">
                 <iframe
@@ -108,6 +100,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       autoComplete="on"
+                      aria-label="Name"
                       required
                     />
                   </fieldset>
@@ -123,7 +116,6 @@ const Contact = () => {
                       pattern="[^ @]*@[^ @]*"
                       placeholder="Your Email"
                       aria-label="Email"
-                      autoComplete="new-email"
                       required
                     />
                   </fieldset>
@@ -133,39 +125,33 @@ const Contact = () => {
                     <textarea
                       name="message"
                       id="message"
+                      placeholder="Please text here..."
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Please text here..."
                       aria-label="Message"
-                      autoComplete="new-message"
                       required
-                    ></textarea>
+                    />
                   </fieldset>
                 </div>
                 <div className="col-lg-12">
-                  {formError && <p className="form-error">{formError}</p>}
-                  {formSuccess && <p className="form-success">{formSuccess}</p>}
                   <fieldset>
-                    <button
-                      type="submit"
-                      id="form-submit"
-                      className="main-button"
-                      aria-label="Submit form"
-                    >
-                      Submit
+                    <button type="submit" aria-label="Send Message">
+                      Send Message
                     </button>
                   </fieldset>
                 </div>
               </div>
+              {formError && <p style={{ color: "red" }}>{formError}</p>}
+              {formSuccess && <p style={{ color: "green" }}>{formSuccess}</p>}
             </form>
           </div>
         </div>
       </div>
       <div className="contact-dec">
-        <img src={ContactImg} alt="contact decoration" />
+        <img src={ContactImg} alt="Decoration" />
       </div>
       <div className="contact-left-dec">
-        <img src={ContactLeft} alt="contact left decoration" />
+        <img src={ContactLeft} alt="Decoration" />
       </div>
     </div>
   );
