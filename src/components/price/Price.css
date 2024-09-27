@@ -13,7 +13,7 @@
     right: 0;
     top: 45px;
     position: absolute;
-    z-index: 1
+    z-index: 1;
 }
 
 .pricing-tables {
@@ -34,6 +34,7 @@
     margin-bottom: -5px;
     position: relative;
     z-index: 1;
+    font-size: 2.5rem;
 }
 
 .pricing-tables .item {
@@ -45,17 +46,18 @@
     text-align: center;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-radius: 45px;
+    margin-bottom: 30px;
 }
 
 .pricing-tables .item h4 {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
     color: #2a2a2a;
 }
 
 .pricing-tables .item em {
     color: #ff695f;
-    font-size: 15px;
+    font-size: 1rem;
     display: block;
     margin-top: 25px;
     text-decoration: line-through;
@@ -63,7 +65,7 @@
 }
 
 .pricing-tables .item span {
-    font-size: 44px;
+    font-size: 2.75rem;
     color: #ff695f;
     font-weight: 700;
     display: block;
@@ -77,14 +79,32 @@
 
 .pricing-tables .item ul li {
     display: block;
-    font-size: 15px;
+    font-size: 1rem;
     color: #7a7a7a;
     margin-bottom: 20px;
 }
 
-.pricing-tables .item .main-blue-button {
+.pricing-tables .item .main-blue-button-hover {
     margin-top: 40px;
 }
+
+.main-blue-button-hover button {
+    display: inline-block;
+    background-color: #03a4ed;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    text-transform: capitalize;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 23px;
+    letter-spacing: 0.25px;
+    transition: all .3s;
+  }
+  
+  .main-blue-button-hover button:hover {
+    background-color: #ff695f;
+  }
 
 .pricing-tables .first-item {
     background-image: url(../../assets/images/first-plan-bg.png);
@@ -101,9 +121,22 @@
 @media (max-width: 992px) {
     .pricing-tables .section-heading h2 {
         margin: 0px;
+        font-size: 2rem;
     }
 
     .pricing-tables .item {
-        margin-bottom: 30px;
+        padding: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* .pricing-tables .tables-left-dec img,
+    .pricing-tables .tables-right-dec img {
+        display: none;
+    } */
+
+    .pricing-tables .item {
+        padding: 30px;
     }
 }

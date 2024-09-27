@@ -1,27 +1,24 @@
 import React from "react";
-
-import PriceLeft from "../../assets/images/tables-left-dec.png"
-import PriceRight from "../../assets/images/tables-right-dec.png"
+import PriceLeft from "../../assets/images/tables-left-dec.png";
+import PriceRight from "../../assets/images/tables-right-dec.png";
 import "./Price.css";
 
 const Price = () => {
   return (
     <div id="pricing" className="pricing-tables">
       <div className="tables-left-dec">
-        <img src={PriceLeft} alt="" />
+        <img src={PriceLeft} alt="Left decorative pricing table" />
       </div>
       <div className="tables-right-dec">
-        <img src={PriceRight} alt="" />
+        <img src={PriceRight} alt="Right decorative pricing table" />
       </div>
       <div className="container">
         <div className="row">
           <div className="col-lg-6 offset-lg-3">
             <div className="section-heading">
               <h2>
-                Select a <em>plan</em> for your{" "}
-                <span>projects</span>
+                Select a <em>plan</em> for your <span>projects</span>
               </h2>
-              {/* <span>Our Plans</span> */}
             </div>
           </div>
         </div>
@@ -38,7 +35,7 @@ const Price = () => {
                 <li>Basic Support</li>
               </ul>
               <div className="main-blue-button-hover">
-                <a href="#">Get Started</a>
+                <button type="button">Get Started</button>
               </div>
             </div>
           </div>
@@ -54,7 +51,7 @@ const Price = () => {
                 <li>Pro Support</li>
               </ul>
               <div className="main-blue-button-hover">
-                <a href="#">Get it Now</a>
+                <button type="button">Get it Now</button>
               </div>
             </div>
           </div>
@@ -70,7 +67,7 @@ const Price = () => {
                 <li>Best Support</li>
               </ul>
               <div className="main-blue-button-hover">
-                <a href="#">Buy Now</a>
+                <button type="button">Buy Now</button>
               </div>
             </div>
           </div>
