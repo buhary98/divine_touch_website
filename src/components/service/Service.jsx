@@ -15,7 +15,7 @@ const Service = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: Math.min(3, servicesData.length),
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -28,7 +28,7 @@ const Service = () => {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 767,
         settings: {
           slidesToShow: 1,
         },
@@ -38,18 +38,27 @@ const Service = () => {
 
   return (
     <div id="services" className="our-services section">
-      <div className="services-right-dec">
-        <img src={ServiceRight} alt="right decoration" />
-      </div>
       <div className="container">
+        <div className="services-right-dec">
+          <img
+            src={ServiceRight}
+            alt="Service section right decorative element"
+            loading="lazy"
+          />
+        </div>
         <div className="services-left-dec">
-          <img src={ServiceLeft} alt="left decoration" />
+          <img
+            src={ServiceLeft}
+            alt="Service section left decorative element"
+            loading="lazy"
+          />
         </div>
         <div className="row">
           <div className="col-lg-6 offset-lg-3">
             <div className="section-heading">
               <h2>
-                We Provide The Best <em>Service</em> With Our <span>Masterpiece</span>
+                We Provide The Best <em>Service</em> With Our{" "}
+                <span>Masterpiece</span>
               </h2>
             </div>
           </div>
@@ -61,7 +70,11 @@ const Service = () => {
                 <div className="item" key={index}>
                   <h4>{service.title}</h4>
                   <div className="icon">
-                    <img src={service.icon} alt="service icon" />
+                    <img
+                      src={service.icon}
+                      alt={`${service.title} icon`}
+                      loading="lazy"
+                    />
                   </div>
                   <p>{service.description}</p>
                 </div>
@@ -78,27 +91,31 @@ const servicesData = [
   {
     title: "Designing and 3D",
     icon: Icon1,
-    description: "Designing and 3D services bring your vision to life with detailed plans and realistic visualizations for your space.",
+    description:
+      "Designing and 3D services bring your vision to life with detailed plans and realistic visualizations for your space.",
   },
   {
     title: "Equipment Procurement",
     icon: Icon2,
-    description: "Involves sourcing and supplying essential tools and appliances tailored to a restaurant's operational needs.",
+    description:
+      "Involves sourcing and supplying essential tools and appliances tailored to a restaurant's operational needs.",
   },
   {
     title: "Demolition Works",
     icon: Icon3,
-    description: "Demolition works involve efficiently removing structures to prepare sites for new renovation.",
+    description:
+      "Demolition works involve efficiently removing structures to prepare sites for new renovation.",
   },
   {
     title: "Restaurant Setup",
     icon: Icon4,
-    description: "Restaurant project encompass the complete process from initiation to obtaining necessary licenses.",
+    description:
+      "Restaurant project encompasses the complete process from initiation to obtaining necessary licenses.",
   },
   {
     title: "Optimizing your websites for Speed",
     icon: Icon1,
-    description: "Get to know more about the topic in details",
+    description: "Get to know more about the topic in details.",
   },
 ];
 

@@ -1,10 +1,21 @@
+.our-services {
+    position: relative;
+    margin-top: 0;
+    padding-top: 120px;
+    padding-bottom: 60px;
+}
+
+.our-services .services-left-dec img,
+.our-services .services-right-dec img {
+    position: absolute;
+    z-index: 1;
+}
+
 .our-services .services-left-dec img {
     width: 387px;
     height: 638px;
     left: -80px;
-    top: -140px;
-    position: absolute;
-    z-index: 1;
+    top: 5px;
 }
 
 .our-services .services-right-dec img {
@@ -12,18 +23,10 @@
     height: 305px;
     right: 25px;
     bottom: -120px;
-    position: absolute;
-    z-index: 1;
 }
 
 .our-services .container {
     position: relative;
-}
-
-.our-services {
-    position: relative;
-    margin-top: 0px;
-    padding-top: 120px;
 }
 
 .our-services .section-heading {
@@ -32,8 +35,9 @@
 }
 
 .our-services .section-heading h2 {
-    margin: 0px 60px;
+    margin: 0 60px;
     margin-bottom: -10px;
+    font-size: 28px;
 }
 
 .our-services .item {
@@ -42,7 +46,12 @@
     border-radius: 20px;
     background-color: #fff;
     padding: 30px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.our-services .item:hover {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
 }
 
 .our-services .item h4 {
@@ -53,16 +62,24 @@
     line-height: 30px;
 }
 
-.our-services .item .icon {
+.our-services .icon {
     width: 45px;
     height: 45px;
     margin: 0 auto;
+}
+
+.our-services .item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .our-services .item p {
     margin-top: 35px;
     padding-top: 30px;
     border-top: 1px solid #eee;
+    font-size: 16px;
+    color: #777;
 }
 
 .slick-slider {
@@ -77,8 +94,41 @@
     margin: 0 -15px;
 }
 
+@media (max-width: 1024px) {
+    .our-services .section-heading h2 {
+        font-size: 26px;
+        margin: 0 30px;
+    }
+
+    .our-services .item {
+        padding: 20px;
+    }
+
+    .our-services .item h4 {
+        font-size: 18px;
+    }
+
+    .our-services .item p {
+        font-size: 15px;
+    }
+}
+
 @media (max-width: 767px) {
     .our-services .section-heading h2 {
-        margin: 0px;
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .our-services .item {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .our-services .item h4 {
+        font-size: 16px;
+    }
+
+    .our-services .item p {
+        font-size: 14px;
     }
 }
