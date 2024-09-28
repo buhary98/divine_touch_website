@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Slider from "react-slick";
 
 import ServiceRight from "../../assets/images/services-right-dec.png";
@@ -10,31 +10,34 @@ import Icon4 from "../../assets/images/service-icon-04.png";
 
 import "./Service.css";
 
-const Service = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: Math.min(3, servicesData.length),
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
+const Service = React.memo(() => {
+  const settings = useCallback(
+    {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: Math.min(3, servicesData.length),
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+          },
         },
-      },
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+          },
         },
-      },
-    ],
-  };
+      ],
+    },
+    []
+  );
 
   return (
     <div id="services" className="our-services section">
@@ -44,6 +47,8 @@ const Service = () => {
             src={ServiceRight}
             alt="Service section right decorative element"
             loading="lazy"
+            srcSet={`${ServiceRight} 305w, ${ServiceRight} 1024w`}
+            sizes="(max-width: 1024px) 305px, 1024px"
           />
         </div>
         <div className="services-left-dec">
@@ -51,6 +56,8 @@ const Service = () => {
             src={ServiceLeft}
             alt="Service section left decorative element"
             loading="lazy"
+            srcSet={`${ServiceLeft} 387w, ${ServiceLeft} 1024w`}
+            sizes="(max-width: 1024px) 387px, 1024px"
           />
         </div>
         <div className="row">
@@ -73,6 +80,8 @@ const Service = () => {
                     <img
                       src={service.icon}
                       alt={`${service.title} icon`}
+                      width="45"
+                      height="45"
                       loading="lazy"
                     />
                   </div>
@@ -85,7 +94,7 @@ const Service = () => {
       </div>
     </div>
   );
-};
+});
 
 const servicesData = [
   {

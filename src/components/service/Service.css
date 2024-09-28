@@ -9,6 +9,7 @@
 .our-services .services-right-dec img {
     position: absolute;
     z-index: 1;
+    will-change: transform;
 }
 
 .our-services .services-left-dec img {
@@ -37,7 +38,6 @@
 .our-services .section-heading h2 {
     margin: 0 60px;
     margin-bottom: -10px;
-    font-size: 28px;
 }
 
 .our-services .item {
@@ -47,11 +47,13 @@
     background-color: #fff;
     padding: 30px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    will-change: transform;
 }
 
 .our-services .item:hover {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
 }
 
 .our-services .item h4 {
@@ -96,7 +98,6 @@
 
 @media (max-width: 1024px) {
     .our-services .section-heading h2 {
-        font-size: 26px;
         margin: 0 30px;
     }
 
@@ -116,7 +117,6 @@
 @media (max-width: 767px) {
     .our-services .section-heading h2 {
         margin: 0;
-        font-size: 24px;
     }
 
     .our-services .item {
