@@ -2,25 +2,36 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    padding: 180px 0 130px;
+    padding: 200px 0 230px;
     position: relative;
     overflow: hidden;
 }
 
 .main-banner .banner-decor-left {
     position: absolute;
+    display: none;
     left: 0;
-    top: 100px;
-    width: 397px;
-    height: auto;
+    top: 120px;
+    width: 100%;
+    height: 850px;
+}
+
+.main-banner .banner-decor-center {
+    position: absolute;
+    display: none;
+    left: 0;
+    top: 120px;
+    width: 100%;
+    height: 680px;
 }
 
 .main-banner .banner-decor-right {
     position: absolute;
     right: 0;
-    top: 100px;
-    width: 819px;
-    height: auto;
+    top: 120px;
+    width: 100%;
+    height: 668px !important;
+    object-fit: cover !important;
 }
 
 .banner-decor-left.loading {
@@ -29,6 +40,16 @@
 }
 
 .banner-decor-left.loaded {
+    filter: none;
+    opacity: 1;
+}
+
+.banner-decor-center.loading {
+    filter: blur(10px);
+    opacity: 0.7;
+}
+
+.banner-decor-center.loaded {
     filter: none;
     opacity: 1;
 }
@@ -53,31 +74,38 @@
     transition: filter 0.5s ease;
 }
 
+.main-banner .item {
+    background: var(--header-color);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .main-banner .item h6 {
     text-transform: uppercase;
     font-size: 18px;
-    color: #ff695f;
+    color: var(--text-color);
     margin-bottom: 15px;
 }
 
 .main-banner .item h2 {
     font-size: 45px;
     font-weight: 700;
-    color: #2a2a2a;
+    color: var(--text-color);
     line-height: 72px;
 }
 
 .main-banner .item h2 em {
-    color: #03a4ed;
+    color: var(--primary-color);
     font-style: normal;
 }
 
 .main-banner .item h2 span {
-    color: #ff695f;
+    color: var(--secondary-color);
 }
 
 .main-banner .item p {
     margin: 20px 0;
+    color: var(--text-color);
 }
 
 .down-buttons {
@@ -92,16 +120,20 @@
     text-align: center;
     line-height: 46px;
     border-radius: 50%;
-    background: linear-gradient(105deg, rgba(255, 104, 95, 1) 0%, rgba(255, 144, 104, 1) 100%);
+    background: var(--secondary-icon-color);
     color: #fff;
     font-size: 20px;
 }
 
 .down-buttons .call-button .lnk {
-    color: #ff695f;
+    color: var(--text-color);
     font-size: 15px;
     font-weight: 500;
     margin-left: 30px;
+}
+
+.main-banner .slick-slide {
+    text-align: left;
 }
 
 .slick-dots.custom-dots {
@@ -112,6 +144,14 @@
     bottom: -80px;
 }
 
+.banner-dots {
+    background: var(--header-color);
+    backdrop-filter: blur(5px);
+    width: 80px;
+    height: 50px;
+    padding: 10px !important;
+}
+
 .slick-dots.custom-dots li {
     margin: 0;
 }
@@ -119,20 +159,20 @@
 .slick-dots.custom-dots li button {
     background: none;
     font-size: 18px;
-    color: #333;
+    color: var(--text-color);
     cursor: pointer;
     transition: color 0.3s ease-in-out;
 }
 
 .slick-dots.custom-dots li.slick-active button,
 .slick-dots.custom-dots li button:hover {
-    color: #ff695f;
+    color: var(--secondary-color);
 }
 
 .custom-dot {
     font-size: 20px;
     font-weight: bold;
-    color: #2a2a2a;
+    color: var(--text-color);
     display: inline-block;
     border-bottom: 3px solid transparent;
     transition: all 0.5s;
@@ -140,8 +180,8 @@
 
 .custom-dot:hover,
 .slick-active .custom-dot {
-    color: #ff685f;
-    border-bottom: 3px solid #ff685f;
+    color: var(--secondary-color);
+    border-bottom: 3px solid var(--secondary-color);
 }
 
 .loader {
@@ -151,7 +191,13 @@
     height: 100%;
     font-size: 24px;
     font-weight: bold;
-    color: #ff695f;
+    color: var(--secondary-color);
+}
+
+@media (max-width: 480px) {
+    .banner-decor-left {
+        display: block !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -167,11 +213,15 @@
 
 @media (max-width: 992px) {
     .banner-decor-right {
-        display: none;
+        display: none !important;
+    }
+
+    .banner-decor-center {
+        display: block !important;
     }
 
     .main-banner {
-        padding-bottom: 50px;
+        padding-bottom: 70px;
     }
 
     .slick-dots.custom-dots {
@@ -179,13 +229,14 @@
     }
 
     .slick-active .custom-dot {
-        border-top: 3px solid #ff685f;
+        border-top: 3px solid var(--secondary-color);
     }
 }
 
 @media (max-width: 1240px) {
     .banner-decor-right {
-        width: 640px;
-        height: auto;
+        width: 100%;
+        height: 850px !important;
+        object-fit: cover !important;
     }
 }
