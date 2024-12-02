@@ -1,8 +1,6 @@
-/* Removed unnecessary .owl-project and slick-dots styling */
-
-/* Improved unique class naming using BEM */
 .project-section {
     padding-top: 120px;
+    padding-bottom: 60px;
     position: relative;
     margin: 0px 15px;
 }
@@ -43,20 +41,23 @@
 
 .project-item__hover-effect {
     position: absolute;
-    background-image: url(../../assets/images/hover-bg.png);
+    background-image: var(--background-image);
     background-repeat: no-repeat;
     background-size: cover;
     transition: all .5s;
     bottom: -240px;
     right: 30px;
-    width: 239px;
+    width: 240px;
     height: 210px;
+    cursor: pointer;
 }
 
 .project-item__hover-effect .inner-content {
     position: absolute;
+    width: 200px;
     right: 30px;
-    bottom: 30px;
+    left: 30px;
+    top: 60px;
     text-align: right;
 }
 
@@ -85,7 +86,7 @@
 
 .slick-dots li button:before {
     font-size: 6px;
-    background-color: #ff695f;
+    background-color: var(--secondary-color);
     opacity: 0.3;
     content: '';
     width: 6px;
@@ -102,8 +103,99 @@
     opacity: 1;
 }
 
+.project-popup-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.project-popup-content {
+    position: relative;
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    margin-top: 120px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.project-popup-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-popup-inner .descp {
+    padding: 30px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 3;
+}
+
+.project-popup-inner .descp h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.project-popup-inner .descp p {
+    margin-top: 35px;
+    margin-bottom: 0px;
+    padding-top: 30px;
+    border-top: 1px solid var(--text-color);
+    font-size: 16px;
+    color: var(--text-color);
+}
+
 @media (max-width: 992px) {
     .section-heading h2 {
         margin: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .project-popup-content {
+        max-width: 95%;
+        padding: 10px;
+        margin-top: 0px;
+    }
+
+    .project-popup-inner .descp h4 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-popup-content {
+        margin-top: 175px;
+    }
+
+    .project-popup-inner .descp {
+        padding: 30px 0px;
+        margin-bottom: 20px;
     }
 }
