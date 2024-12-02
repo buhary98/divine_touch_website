@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './PreLoader.css';
+import React, { useEffect, useState } from "react";
+import "./PreLoader.css";
 
-const PreLoader = () => {
+const PreLoader = ({ currentTheme }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -13,10 +13,10 @@ const PreLoader = () => {
   }, []);
 
   return (
-    <div 
-      className={`js-preloader ${!isLoading ? 'loaded' : ''}`} 
-      aria-busy={isLoading} 
-      aria-live="polite" 
+    <div
+      className={`js-preloader ${!isLoading ? "loaded" : ""} ${currentTheme}`}
+      aria-busy={isLoading}
+      aria-live="polite"
       role="alert"
     >
       <div className="preloader-inner">

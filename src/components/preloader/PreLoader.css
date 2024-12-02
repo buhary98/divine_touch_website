@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fff;
+    background-color: #ffffff;
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
@@ -58,7 +58,7 @@
     position: relative;
     width: 142px;
     height: 40px;
-    background: #fff;
+    background: #ffffff;
 }
 
 .preloader-inner .dot {
@@ -67,7 +67,7 @@
     height: 16px;
     top: 12px;
     left: 15px;
-    background: #ff695f;
+    background: var(--secondary-color);
     border-radius: 50%;
     -webkit-transform: translateX(0);
     transform: translateX(0);
@@ -90,6 +90,6 @@
     width: 16px;
     height: 16px;
     margin-left: 16px;
-    background: #ff695f;
+    background: var(--secondary-color);
     border-radius: 50%;
 }
