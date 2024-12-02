@@ -3,7 +3,7 @@
 }
 
 .about-us .left-image {
-  margin-right: 30px;
+  text-align: center;
 }
 
 .about-us .section-heading h2 {
@@ -14,39 +14,9 @@
   margin-top: 50px;
 }
 
-.fact-item {
-  margin-top: 45px;
-  text-align: center;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.fact-item .icon {
-  width: 45px;
-  height: 45px;
-  margin: 0 auto;
-}
-
-.fact-item .count-digit {
-  font-size: 48px;
-  font-weight: 700;
-  color: #2a2a2a;
-  margin-top: 5px;
-}
-
-.fact-item .count-title {
-  font-size: 15px;
-  color: #ff695f;
-}
-
-.fact-item p {
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
-}
-
 .left-image img {
-  width: 100%;
+  width: 85%;
+  border-radius: 50px;
   height: auto;
   transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }

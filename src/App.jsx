@@ -19,7 +19,9 @@ import Price from "./components/price/Price";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import FooterDec from "./components/footer/FooterDec";
+import Toggler from "./components/toggler/Toggler";
 import Chat from "./components/chat/Chat";
+
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
       <Contact />
       <FooterDec />
       <Footer />
+      <Toggler />
       <Chat phoneNumber="+85260606457" />
     </div>
   );
