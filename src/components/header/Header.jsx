@@ -1,24 +1,34 @@
 import React, { useState, useEffect, useCallback } from "react";
-import "./Header.css";
+import { useSelector } from "react-redux";
+
 import "animate.css";
 import { WOW } from "wowjs";
-import logo from "../../assets/images/logo.png";
+
+import Logo1 from "../../assets/images/logo-01.png";
+import Logo2 from "../../assets/images/logo-02.png";
+
+import "./Header.css";
+
+const toggleLogo = {
+  "theme-default": Logo1,
+  "theme-one": Logo1,
+  "theme-two": Logo2,
+  "theme-three": Logo2,
+};
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Initialize WOW.js for animations
+  const theme = useSelector((state) => state.theme.theme);
+
   useEffect(() => {
-    const wow = new WOW({
-      live: false, // Disable automatic detection of new elements
-    });
+    const wow = new WOW({ live: false });
     wow.init();
     wow.sync();
   }, []);
 
-  // Function to update the active section link on scroll
   const updateActiveLinkOnScroll = useCallback(() => {
     const sections = document.querySelectorAll(".scroll-to-section a");
     let scrollPosition = window.scrollY + 1;
@@ -39,7 +49,6 @@ const Header = () => {
     });
   }, []);
 
-  // Function to handle scroll event for sticky header and updating active links
   useEffect(() => {
     const handleScroll = () => {
       const boxHeight =
@@ -60,25 +69,22 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [updateActiveLinkOnScroll]);
 
-  // Function to toggle the menu open/close
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Function to smoothly scroll to sections
   const handleScrollToSection = (e, section) => {
     e.preventDefault();
     const target = document.querySelector(section);
     if (target) {
       window.scrollTo({
-        top: target.offsetTop + 1, // Add offset to fix scroll position
+        top: target.offsetTop + 1,
         behavior: "smooth",
       });
     }
-    setIsMenuOpen(false); // Close menu after clicking on a section
+    setIsMenuOpen(false);
   };
 
-  // Function to close the menu when resizing the window
   const handleResize = () => {
     if (window.innerWidth > 991) {
       setIsMenuOpen(false);
@@ -103,8 +109,12 @@ const Header = () => {
           <div className="col-12">
             <nav className="main-nav">
               <a href="/" className="logo">
-                <img src={logo} alt="Logo" />
+                <img src={toggleLogo[theme] || ""} alt="Logo" />
+                <p>
+                  Divine Touch Interiors
+                </p>
               </a>
+
               <ul className={`nav ${isMenuOpen ? "open" : ""}`}>
                 {["home", "about", "services", "project", "contact"].map(
                   (section) => (
@@ -119,16 +129,6 @@ const Header = () => {
                     </li>
                   )
                 )}
-                <li className="scroll-to-section">
-                  <div className="main-red-button-hover">
-                    <a
-                      href="#contact"
-                      onClick={(e) => handleScrollToSection(e, "#contact")}
-                    >
-                      Contact Us Now
-                    </a>
-                  </div>
-                </li>
               </ul>
               <div
                 className={`menu-trigger ${isMenuOpen ? "active" : ""}`}

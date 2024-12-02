@@ -29,13 +29,6 @@
     margin-bottom: 60px;
 }
 
-.pricing-tables .section-heading h2 {
-    margin: 0 50px -5px;
-    font-size: 2.5rem;
-    position: relative;
-    z-index: 1;
-}
-
 .pricing-tables .item {
     position: relative;
     z-index: 2;
@@ -51,37 +44,14 @@
 .pricing-tables .item h4 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #2a2a2a;
+    color: var(--price-text-color);
 }
 
-.pricing-tables .item em,
-.pricing-tables .item span {
-    display: block;
-    color: #ff695f;
-    font-weight: 700;
-}
-
-.pricing-tables .item em {
+.pricing-tables .item p {
     font-size: 1rem;
-    margin-top: 25px;
-    text-decoration: line-through;
-}
-
-.pricing-tables .item span {
-    font-size: 2.75rem;
-    margin-top: -5px;
-}
-
-.pricing-tables .item ul {
-    margin-top: 30px;
-    padding: 0;
-}
-
-.pricing-tables .item ul li {
-    font-size: 1rem;
-    color: #7a7a7a;
-    margin-bottom: 20px;
-    list-style: none;
+    color: var(--price-text-color);
+    padding: 20px 0px;
+    margin: 0px;
 }
 
 .pricing-tables .item .main-blue-button-hover {
@@ -90,7 +60,7 @@
 
 .main-blue-button-hover button {
     display: inline-block;
-    background-color: #03a4ed;
+    background-color: var(--primary-color);
     font-size: 15px;
     font-weight: 400;
     color: #fff;
@@ -103,11 +73,7 @@
 }
 
 .main-blue-button-hover button:hover {
-    background-color: #ff695f;
-}
-
-.pricing-tables .first-item {
-    background-image: url(../../assets/images/first-plan-bg.png);
+    background-color: var(--secondary-color);
 }
 
 .pricing-tables .second-item {
@@ -116,6 +82,93 @@
 
 .pricing-tables .third-item {
     background-image: url(../../assets/images/third-plan-bg.png);
+}
+
+.price-container {
+    justify-content: center;
+}
+
+.popup-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.popup-content {
+    position: relative;
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    margin-top: 120px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.popup-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-inner .list {
+    padding: 20px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 3;
+}
+
+.popup-inner .list h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.popup-inner .list em,
+.popup-inner .list span {
+    display: block;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.popup-inner .list em {
+    font-size: 25px;
+    margin-top: 20px;
+    font-style: normal;
+}
+
+.popup-inner .list span {
+    font-size: 30px;
+    margin-top: -10px;
+}
+
+.popup-inner .list p {
+    font-size: 1rem;
+    color: var(--text-color);
+    padding-top: 20px;
+    margin: 0px;
 }
 
 @media (max-width: 992px) {
@@ -131,12 +184,60 @@
 
 @media (max-width: 768px) {
 
-    /* .pricing-tables .tables-left-dec img,
     .pricing-tables .tables-right-dec img {
-        display: none;
-    } */
+        top: 700px;
+    }
 
     .pricing-tables .item {
+        width: 60%;
         padding: 30px;
+        margin: 40px auto;
+    }
+
+    .popup-content {
+        max-width: 60%;
+        padding: 15px;
+    }
+
+    .popup-inner .list h4 {
+        font-size: 18px;
+    }
+
+    .popup-inner .list em {
+        font-size: 20px;
+    }
+
+    .popup-inner .list span {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .pricing-tables .tables-right-dec img {
+        top: 850px;
+    }
+
+    .pricing-tables .item {
+        width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .popup-content {
+        max-width: 95%;
+        padding: 10px;
+        margin-top: 175px;
+    }
+
+    .popup-inner .list {
+        padding: 20px 10px;
+        margin-bottom: 20px;
+    }
+
+    .close-button {
+        top: 5px;
+        right: 5px;
+        font-size: 20px;
     }
 }
